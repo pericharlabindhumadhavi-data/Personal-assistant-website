@@ -32,3 +32,44 @@ The dashboard features a video background, modular panels, and a dark/light mode
 - **Frontend:** HTML, CSS, JavaScript  
 - **UI Enhancements:** Video backgrounds, dark/light mode toggle  
 - **Version Control:** Git & GitHub  
+
+## Project Structure
+
+- **app.py** → Main Flask application file  
+- **templates/** → HTML templates  
+  - index.html  
+  - login.html  
+  - register.html  
+  - dashboard.html  
+- **static/** → Static assets (CSS, JS, videos)  
+  - css/style.css  
+  - js/script.js  
+  - loginpage.mp4  
+  - homepage.mp4  
+- **users.db** → Database for user accounts  
+- **notes.db** → Database for notes  
+- **habits.db** → Database for habits  
+- **requirements.txt** → Python dependencies  
+- **.gitignore** → Git ignore rules  
+
+## Project Structure
+<pre>
+├── app.py
+├── templates/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   └── dashboard.html
+├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   ├── loginpage.mp4
+│   └── homepage.mp4
+├── users.db
+├── notes.db
+├── habits.db
+├── requirements.txt
+└── .gitignore
+<pre>
