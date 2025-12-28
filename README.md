@@ -72,14 +72,6 @@ The dashboard features a video background, modular panels, and a dark/light mode
 ├── habits.db
 ├── requirements.txt
 └── .gitignore
-<pre>
+</pre></pre>
 
-  
-## Setup & Installation
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/pericharlabindhumadhavi-data/personal-assistant-website.git
-   cd personal-assistant-website
-pip install -r requirements.txt
-py app.py
-http://127.0.0.1:5000
+
