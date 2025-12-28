@@ -1,10 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 <body>
-    <h1>Personal Assistant Website</h1>
 
-    <input type="text" id="userInput" placeholder="Type something..." />
-    <button onclick="sendMessage()">Send</button>
+<!-- App Header (auth-aware) -->
+<header class="app-header">
+  <div class="brand">
+    <span class="logo">🧭</span>
+    <span>My Personal Assistant</span>
+  </div>
+  <nav class="app-actions">
+    <span class="user">{{ session.get('user') }}</span>
+    <button id="theme-toggle">🌙 Toggle Dark/Light</button>
+    <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+  </nav>
+</header>
 
-    <p id="result"></p>
+<main class="grid">
 
-    <script src="/static/js/script.js"></script>
+ <main class="grid">
+
+  <!-- Weather -->
+  <section class="card weather-card">
+    <h2>🌤 Weather</h2>
+    <form id="assistant-form">
+      <input type="text" name="query" placeholder="weather in Mumbai" required>
+      <button type="submit">Send</button>
+    </form>
+    <p id="response"></p>
+  </section>
+
+  <!-- Quotes -->
+  <section class="card quotes-card">
+    <h2>💬 Daily Quote</h2>
+    <blockquote id="quote-text"></blockquote>
+    <cite id="quote-author"></cite><br><br>
+    <button id="quote-refresh">Refresh</button>
+  </section>
+
+  <!-- Jokes -->
+  <section class="card jokes-card">
+    <h2>🤣 Joke of the moment</h2>
+    <p id="joke-setup"></p>
+    <p id="joke-punchline" style="font-weight:600;"></p>
+    <button id="joke-refresh">Tell me another</button>
+  </section>
+
+  <!-- News -->
+  <section class="card news-card">
+    <h2>📰 Latest News</h2>
+    <ul id="news-list" class="news-list"></ul>
+    <button id="news-refresh">Refresh News</button>
+  </section>
+
+  <!-- Dictionary -->
+  <section class="card dict-card">
+    <h2>📖 Dictionary</h2>
+    <input type="text" id="dict-input" placeholder="Enter a word">
+    <button id="dict-search">Search</button>
+    <p><strong>Meaning:</strong> <span id="dict-meaning"></span></p>
+    <p><strong>Example:</strong> <span id="dict-example"></span></p>
+  </section>
+
+  <!-- To-Do List -->
+  <section class="card todo-card">
+    <h2>✅ To-Do List</h2>
+    <input type="text" id="todo-input" placeholder="Add a task">
+    <button id="todo-add">Add</button>
+    <ul id="todo-list" class="todo-list"></ul>
+  </section>
+
+  <!-- Mood Music -->
+  <section class="card music-card">
+    <h2>🎵 Mood Music</h2>
+    <label for="mood-select">Choose a vibe:</label>
+    <select id="mood-select">
+      <option value="chill">Chill</option>
+      <option value="sad">Sad</option>
+      <option value="happy">Happy</option>
+      <option value="emotional">Emotional</option>
+      <option value="dance">Dance / DJ</option>
+      <option value="vibe">Vibe</option>
+      <option value="focus">Focus</option>
+      <option value="energetic">Energetic</option>
+      <option value="romantic">Romantic</option>
+      <option value="lofi">Lo‑Fi</option>
+      <option value="retro">Retro</option>
+      <option value="bollywood">Bollywood</option>
+      <option value="telugu">Telugu</option>
+      <option value="workout">Workout</option>
+      <option value="calm">Calm</option>
+      <option value="party">Party</option>
+    </select>
+    <div id="music-player" class="music-player"></div>
+  </section>
+
+  <!-- Calendar -->
+  <section class="card calendar-card" id="calendar-card">
+    <h2>📅 Calendar</h2>
+    <input type="date" id="calendar-date" />
+    <input type="text" id="calendar-event" placeholder="Add event" />
+    <button id="calendar-add">Add</button>
+    <ul id="calendar-list"></ul>
+  </section>
+
+  <!-- Habit Tracker -->
+ <section class="card habits-card habit-container">
+    <h2>📊 Habit Tracker</h2>
+    <form id="habit-form">
+      <input type="text" id="habit-name" placeholder="Enter habit name" required>
+      <button type="submit">Add Habit</button>
+    </form>
+    <div id="habit-table"></div>
+    <div class="habit-tracker">
+  </section>
+  <!-- Notes -->
+  <section class="card notes-card" id="notes-card">
+    <h2>📝 Notes</h2>
+    <form id="note-form">
+      <input type="text" id="note-input" placeholder="Write a note..." required>
+      <button type="submit">Add</button>
+    </form>
+    <ul id="notes-list"></ul>
+  </section>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+</html>

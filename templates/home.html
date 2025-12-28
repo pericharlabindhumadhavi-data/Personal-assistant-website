@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home - My Personal Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<video autoplay muted loop id="bg-video">
+  <source src="{{ url_for('static', filename='homepage.mp4') }}" type="video/mp4">
+</video>
+
+<!-- Top nav -->
+<header class="site-header">
+  <div class="site-nav-left">
+    <a href="{{ url_for('landing') }}">Home</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="site-nav-right">
+    <a href="{{ url_for('login') }}" class="btn btn-primary">Login</a>
+    <a href="{{ url_for('register') }}" class="btn btn-primary">Sign Up</a>
+  </div>
+</header>
+<section class="home-title">
+  <h1>My Personal Assistant</h1>
+</section>
+
+<!-- About section -->
+<section id="about" class="about-box">
+  <p>
+    <strong>My Personal Assistant</strong> is a unified productivity dashboard that brings together all the essentials you need in one place. From weather updates and news feeds to jokes, quotes, task management, notes, dictionary access, calendar scheduling, and habit tracking — everything is organized into a single, intuitive interface.
+  </p>
+  <p>
+    Designed for clarity and speed, each feature is modular, color‑coded for quick recognition, and responsive across devices. Whether you’re planning your day, organizing thoughts, or staying informed, the assistant keeps you focused and efficient.
+  </p>
+  <p>
+    With dark mode support, smooth transitions, and a clean grid layout, the experience feels polished and reliable. The dashboard adapts to your routine, offering a distraction‑free environment for personal productivity.
+  </p>
+  <p>
+    It’s built for individuals who value organization, minimalism, and control — a companion that helps you manage your time, tasks, and mindset with confidence.
+  </p>
+</section>
+
+<section class="features-heading">
+   <h2>Features Included</h2> 
+  </section>
+<section class="features">
+  <div class="feature-box">
+    <span class="feature-icon">☀️</span>
+    <h3>Weather</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">📰</span>
+    <h3>News</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">📖</span>
+    <h3>Dictionary</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">📝</span>
+    <h3>Notes</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">✅</span>
+    <h3>To-Do</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">📅</span>
+    <h3>Calendar</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">💡</span>
+    <h3>Quotes</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">😂</span>
+    <h3>Jokes</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">🎵</span>
+    <h3>Music</h3>
+  </div>
+  <div class="feature-box">
+    <span class="feature-icon">📊</span>
+    <h3>Habits</h3>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© {{ 2025 }} My Personal Assistant · Built by Bindhu Madhavi, Sowmya</p>
+</footer>
+
+<script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>
