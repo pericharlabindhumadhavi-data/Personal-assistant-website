@@ -1,10 +1,10 @@
 # My Personal Assistant Dashboard 🧠
 
-A Flask-based personal assistant web application with login authentication, notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news — all in one polished dashboard with video background and dark/light mode toggle.
+A Flask-based personal assistant web application with login authentication, notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news all in one polished dashboard with video background and dark/light mode toggle.
 
 ## Overview
 This project is a personal productivity dashboard built with Flask and SQLite.  
-It allows users to log in and access multiple assistant tools — including notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news — all from a single homepage.  
+It allows users to log in and access multiple assistant tools — including notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news all from a single homepage.  
 The dashboard features a video background, modular panels, and a dark/light mode toggle for a modern user experience.
 
 ## Features
