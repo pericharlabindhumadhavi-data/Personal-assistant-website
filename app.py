@@ -1,10 +1,20 @@
 import requests
 import sqlite3
+import os
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # required for session handling
- # --- Users DB setup ---
+
+# --- Configure upload folder ---
+UPLOAD_FOLDER = os.path.join("static", "uploads")
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+# Ensure the folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+# --- Users DB setup ---
 def init_users_db():
     conn = sqlite3.connect("users.db")
     c = conn.cursor()
@@ -20,19 +30,47 @@ def init_users_db():
 
 init_users_db()
 
+# --- Dashboard ---
+@app.route("/dashboard")
+def dashboard():
+    if "user" not in session:
+        return redirect(url_for("login"))
+
+    photo_url = session.get("photo_url", "uploads/default.jpg")
+
+    return render_template(
+        "index.html",
+        username=session["user"],
+        photo_url=photo_url
+    )
+
+# --- Photo upload/reset ---
+@app.route('/upload_photo', methods=['POST'])
+def upload_photo():
+    if 'photo' not in request.files:
+        return redirect(url_for('dashboard'))
+
+    photo = request.files['photo']
+    if photo.filename == '':
+        return redirect(url_for('dashboard'))
+
+    if photo:
+        filename = secure_filename(photo.filename)
+        photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        photo_url = f'uploads/{filename}'
+        session['photo_url'] = photo_url
+
+    return redirect(url_for('dashboard'))
+
+@app.route('/reset_photo')
+def reset_photo():
+    session['photo_url'] = 'uploads/default.jpg'
+    return redirect(url_for('dashboard'))
+
 # Landing page at /
 @app.route("/")
 def landing():
     return render_template("home.html")
-
-# Dashboard at /dashboard
-@app.route("/dashboard")
-def dashboard():
-    if "user" in session:
-        return render_template("index.html")
-    return redirect(url_for("login"))
-
-
 
 # Weather API key (hard-coded)
 API_KEY = "c99719ce609ea56a318477d5050fe9e3"

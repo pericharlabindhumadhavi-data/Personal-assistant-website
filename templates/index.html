@@ -15,10 +15,24 @@
     <span>My Personal Assistant</span>
   </div>
   <nav class="app-actions">
-    <span class="user">{{ session.get('user') }}</span>
+    <!-- User photo upload (clickable avatar) -->
+    <form method="POST" action="{{ url_for('upload_photo') }}" enctype="multipart/form-data" class="upload-form">
+      <label for="photo-input">
+        <img src="{{ url_for('static', filename=photo_url) }}" alt="User Photo" class="user-photo clickable">
+      </label>
+      <input type="file" id="photo-input" name="photo" accept="image/*" style="display:none" onchange="this.form.submit()">
+    </form>
+
+    <!-- Username -->
+    <span class="user">{{ username }}</span>
+
+    <!-- Theme toggle + logout -->
     <button id="theme-toggle">🌙 Toggle Dark/Light</button>
     <a class="logout" href="{{ url_for('logout') }}">Logout</a>
   </nav>
+</header>
+
+
 </header>
 
 <main class="grid">
@@ -130,7 +144,6 @@
   </section>
 
 </main>
-
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

@@ -343,7 +343,7 @@ button {
   z-index: -1;
   pointer-events: none;
 }
-
+ 
 /* Login container */
 .login-container {
   position: relative;
@@ -396,17 +396,62 @@ button {
   background: #357ab8;
 }
 
-.signup-link {
-  margin-top: 16px;
-  font-size: 14px;
+/* Signup page layout */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: transparent;
 }
-.signup-link a {
-  color: #4a90e2;
+
+/* Signup container styling */
+.signup-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  color: #fff;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+/* Signup form inputs and button */
+.signup-container input,
+.signup-container button {
+  width: 100%;
+  padding: 8px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.signup-container button {
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+
+.signup-container button:hover {
+  background-color: #357ab8;
+}
+
+/* Signup link styling */
+.signup-container a {
+  color: #ffc107;
   text-decoration: none;
 }
-.signup-link a:hover {
+
+.signup-container a:hover {
   text-decoration: underline;
 }
+
 
 .error {
   color: #e74c3c;
@@ -689,3 +734,39 @@ button {
   border-radius: 12px;
   letter-spacing: 1px;
 }
+#signupVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* keeps video behind form */
+  object-fit: cover;
+}
+
+.signup-container {
+  position: relative;
+  z-index: 1;
+  background: rgba(0,0,0,0.5); /* overlay for readability */
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+  max-width: 400px;
+  margin: 100px auto;
+}
+.user-photo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.user-photo.clickable {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.user-photo.clickable:hover {
+  transform: scale(1.05);
+}
+
