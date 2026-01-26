@@ -20,15 +20,31 @@ def init_users_db():
     c = conn.cursor()
     c.execute("""
         CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
     conn.commit()
     conn.close()
 
+
 init_users_db()
+
+def init_tracking_db():
+    # Use the same users.db for simplicity
+    conn = sqlite3.connect("users.db")
+    c = conn.cursor()
+    with open("schema.sql", "r", encoding="utf-8") as f:
+        c.executescript(f.read())
+    conn.commit()
+    conn.close()
+
+# Call once at startup
+init_tracking_db()
+
 
 # --- Dashboard ---
 @app.route("/dashboard")
@@ -37,12 +53,8 @@ def dashboard():
         return redirect(url_for("login"))
 
     photo_url = session.get("photo_url", "uploads/default.jpg")
+    return render_template("index.html", username=session["user"], photo_url=photo_url)
 
-    return render_template(
-        "index.html",
-        username=session["user"],
-        photo_url=photo_url
-    )
 
 # --- Photo upload/reset ---
 @app.route('/upload_photo', methods=['POST'])
@@ -83,23 +95,26 @@ def home():
 def register():
     if request.method == "POST":
         username = request.form.get("username", "").strip()
+        email = request.form.get("email", "").strip()
         password = request.form.get("password", "").strip()
-        if not username or not password:
-            return render_template("register.html", error="Username and password required")
+
+        if not username or not email or not password:
+            return render_template("register.html", error="All fields required")
 
         conn = sqlite3.connect("users.db")
         c = conn.cursor()
         try:
-            c.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+            c.execute("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
+                      (username, email, password))  # ⚠️ later replace with hashed password
             conn.commit()
         except sqlite3.IntegrityError:
             conn.close()
-            return render_template("register.html", error="Username already exists")
+            return render_template("register.html", error="Username or email already exists")
+        
         conn.close()
         return redirect(url_for("login"))
 
     return render_template("register.html")
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -109,15 +124,15 @@ def login():
 
         conn = sqlite3.connect("users.db")
         c = conn.cursor()
-        c.execute("SELECT id FROM users WHERE username=? AND password=?", (username, password))
-        user = c.fetchone()
+        c.execute("SELECT user_id, password_hash FROM users WHERE username=?", (username,))
+        row = c.fetchone()
         conn.close()
 
-        if user:
-            session["user"] = username
-            return redirect(url_for("dashboard"))   # ✅ add this here
-
-        return render_template("login.html", error="Invalid credentials")
+        if row and row[1] == password:  # plain text for now
+            session["user"] = username   # ✅ this is what dashboard checks
+            return redirect(url_for("dashboard"))
+        else:
+            return render_template("login.html", error="Invalid username or password")
 
     return render_template("login.html")
 
@@ -409,5 +424,7 @@ def delete_note(note_id):
     conn.close()
     return jsonify({"status": "note deleted", "note_id": note_id})
 
+
+ 
 if __name__ == "__main__":
     app.run(debug=True)
