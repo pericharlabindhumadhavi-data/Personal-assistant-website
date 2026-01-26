@@ -55,4 +55,44 @@ The dashboard features a video background, modular panels, and a dark/light mode
 └── .gitignore
 </pre></pre>
 
+## Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/pericharlabindhumadhavi-data /personal-assistant-dashboard.git
+   cd personal-assistant-dashboard
+   ```
+
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Run the app:
+```bash
+py app.py
+```
+Open in browser:
+http://127.0.0.1:5000
+
+
+## Usage Guide
+- Register a new account or log in with your credentials.
+- Access the dashboard with panels for notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news.
+- Toggle between dark/light mode for your preferred theme.
+- Upload a profile photo or reset to default.
+
+
+## APIs Used
+- **OpenWeather API** → Provides live weather data based on user location.
+- **ZenQuotes API** → Supplies motivational quotes for the daily quote panel.
+- **NewsAPI** → Fetches latest headlines from multiple sources.
+- **Official Joke API** → Delivers random jokes for the joke panel.
+
+## Roadmap
+- 🔐 Add secure password hashing (using Werkzeug or bcrypt).
+- 📱 Improve mobile responsiveness for dashboard panels.
+- ☁️ Deploy to cloud platforms (Heroku, Render, or AWS).
+- 📊 Add analytics panel to track user activity and habits.
+- 🧠 Integrate AI-powered assistant responses (chat or voice).
 
