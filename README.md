@@ -96,15 +96,3 @@ http://127.0.0.1:5000
 - 📊 Add analytics panel to track user activity and habits.
 - 🧠 Integrate AI-powered assistant responses (chat or voice).
 
-## Screenshots
-
-### home page 
-![home page](screenshots/home.png)
-### Login Page
-![Login Page](screenshots/login.png)
-
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### Dark/Light Mode
-![Theme Toggle](screenshots/theme-toggle.png)
