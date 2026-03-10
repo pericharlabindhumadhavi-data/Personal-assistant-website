@@ -134,23 +134,34 @@ loadTasks();
 
 // mood music player
 const playlists = {
-  chill: "https://www.youtube.com/embed/jfKfPfyJRdk",                
-  sad: "https://www.youtube.com/embed/LcM2GZl4bN4",                    
-  happy: "https://www.youtube.com/embed/2Vv-BfVoq4g",                  
-  emotional: "https://www.youtube.com/embed/hoNb6HuNmU8",              
-  dance: "https://www.youtube.com/embed/WUJPnXQbJ3I",                   
-  vibe: "https://www.youtube.com/embed/5qap5aO4i9A",                    
-  focus: "https://www.youtube.com/embed/5qap5aO4i9A",                   
-  energetic: "https://www.youtube.com/embed/dPOy2V7v8mo",             
-  romantic: "https://www.youtube.com/embed/3AtDnEC4zak",               
-  lofi: "https://www.youtube.com/embed/jfKfPfyJRdk",                    
-  retro: "https://www.youtube.com/embed/G1IbRujko-A",                  
-  bollywood: "https://www.youtube.com/embed/Tb5x1v0aQG0",               
-  telugu: "https://www.youtube.com/embed/3rMs5nB1Jxg",               
-  workout: "https://www.youtube.com/embed/9bZkp7q19f0",                 
-  calm: "https://www.youtube.com/embed/eR5dC1H2f14",                 
-  party: "https://www.youtube.com/embed/0KSOMA3QBU0"                   
+  chill: "https://open.spotify.com/embed/playlist/37i9dQZF1DX4WYpdgoIcn6",   // Chill Hits
+  sad: "https://open.spotify.com/embed/playlist/37i9dQZF1DWVV27DiNWxkR",     // Sad Songs
+  happy: "https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC",   // Happy Vibes
+  emotional: "https://open.spotify.com/embed/playlist/37i9dQZF1DX3YSRoSdA634", // Emotional Songs
+  dance: "https://open.spotify.com/embed/playlist/37i9dQZF1DX0BcQWzuB7ZO",   // Dance Hits
+  vibe: "https://open.spotify.com/embed/playlist/37i9dQZF1DX889U0CL85jj",    // Good Vibes
+  focus: "https://open.spotify.com/embed/playlist/37i9dQZF1DX3PFzdbtx1Us",   // Focus / Study
+  energetic: "https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7cM", // Energetic Mix
+  romantic: "https://open.spotify.com/embed/playlist/37i9dQZF1DWXbttAJcbphx", // Love Songs
+  lofi: "https://open.spotify.com/embed/playlist/37i9dQZF1DXd9rSDyQguIk",    // Lofi Beats
+  retro: "https://open.spotify.com/embed/playlist/37i9dQZF1DX4UtSsGT1Sbe",   // Retro Classics
+  bollywood: "https://open.spotify.com/embed/playlist/37i9dQZF1DWXVJK4aT7pmk", // Bollywood Hits
+  telugu: "https://open.spotify.com/embed/playlist/37i9dQZF1DWYJ5kmTbkZiz",  // Telugu Songs
+  workout: "https://open.spotify.com/embed/playlist/37i9dQZF1DX76Wlfdnj7cM", // Workout Mix
+  calm: "https://open.spotify.com/embed/playlist/37i9dQZF1DWUvH8E2BvRXK",    // Calm & Relax
+  party: "https://open.spotify.com/embed/playlist/37i9dQZF1DXaXB8fQg7xif"    // Party Hits
 };
+document.getElementById("mood-select").addEventListener("change", function() {
+  const mood = this.value;
+  const player = document.getElementById("music-player");
+  player.innerHTML = `
+    <iframe style="border-radius:12px" 
+      src="${playlists[mood]}" 
+      width="100%" height="380" frameborder="0" allowfullscreen="" 
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+      loading="lazy">
+    </iframe>`;
+});
 
 function renderPlayer(src) {
   const player = document.getElementById("music-player");
@@ -392,4 +403,3 @@ const observer = new IntersectionObserver(entries => {
     if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 });
-

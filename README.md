@@ -4,7 +4,7 @@ A Flask-based personal assistant web application with login authentication, note
 
 ## Overview
 This project is a personal productivity dashboard built with Flask and SQLite.  
-It allows users to log in and access multiple assistant tools — including notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news all from a single homepage.  
+It allows users to log in and access multiple assistant tools including notes, habits, weather, dictionary, jokes, quotes, music, calendar, and news all from a single homepage.  
 The dashboard features a video background, modular panels, and a dark/light mode toggle for a modern user experience.
 
 ## Features
@@ -96,15 +96,3 @@ http://127.0.0.1:5000
 - 📊 Add analytics panel to track user activity and habits.
 - 🧠 Integrate AI-powered assistant responses (chat or voice).
 
-## Screenshots
-
-### home page 
-![home page](screenshots/home.png)
-### Login Page
-![Login Page](screenshots/login.png)
-
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
-
-### Dark/Light Mode
-![Theme Toggle](screenshots/theme-toggle.png)
