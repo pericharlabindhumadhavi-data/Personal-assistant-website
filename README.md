@@ -17,7 +17,7 @@ The dashboard features a video background, modular panels, and a dark/light mode
 - 📰 **Latest news panel:** Displays headlines from multiple sources with refresh option.
 - 📖 **Dictionary panel:** Search for word meanings and example usage.
 - ✅ **To‑Do list panel:** Add and manage personal tasks.
-- 🎵 **Mood music panel:** Choose a vibe and play curated YouTube music.
+- 🎵 **Mood music panel:** Choose a vibe and stream curated Spotify playlists.
 - 📅 **Calendar panel:** Add events to specific dates.
 - 📊 **Habit tracker panel:** Create habits and track daily progress.
 - 📝 **Notes panel:** Write and save personal notes.
