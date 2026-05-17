@@ -165,7 +165,6 @@ document.getElementById("mood-select").addEventListener("change", function() {
 
 function renderPlayer(src) {
   const player = document.getElementById("music-player");
-  // YouTube embed iframe (works without API keys)
   player.innerHTML = `
     <iframe
       width="100%"
@@ -328,7 +327,8 @@ async function loadHabits() {
         })
       });
 
-      loadHabits(); // reload table to reflect change
+      cell.className = newStatus;
+      cell.textContent = newStatus === "done" ? "✅" : "❌";
     });
   });
 

@@ -769,4 +769,70 @@ button {
 .user-photo.clickable:hover {
   transform: scale(1.05);
 }
+.days-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
 
+.day-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.day-btn.completed {
+  background-color: #22c55e;
+  color: white;
+}
+/* ---------- Habit Tracker ---------- */
+
+#habit-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+#habit-table th,
+#habit-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  min-width: 40px;
+}
+
+#habit-table th {
+  background: #f4f4f4;
+  color: #222;
+}
+
+#habit-table td {
+  background: #ffffff;
+  color: #222;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#habit-table td:hover {
+  transform: scale(1.05);
+}
+
+#habit-table td.done {
+  background: #4caf50;
+  color: white;
+}
+
+#habit-table td.missed {
+  background: #f9f9f9;
+  color: white;
+}
+
+.delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
